@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+  <title>Search Claim</title>
+  <link rel="stylesheet" href="login.css">
+  <style>
+    /* CSS Styling */
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f1f1f1;
+      margin: 0;
+      padding: 20px;
+    }
+  
+    h1 {
+      text-align: center;
+    }
+  
+    .form-container {
+      max-width: 400px;
+      margin: 0 auto;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+  
+    label {
+      display: block;
+      margin-top: 10px;
+    }
+  
+    input[type="text"], select, input[type="date"] {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+  
+    #dateFields {
+      display: none;
+    }
+  
+    #submitBtn {
+      display: block;
+      width: 100%;
+      padding: 12px;
+      background-color: #4CAF50;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background-color 0.3s;
+    }
+    #back{
+      display: inline;
+      padding: 12px;
+      text-align: left;
+      background-color: #4CAF50;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background-color 0.3s;
+    }
+    #backL:hover{
+      background-color: #45a049;
+    }
+  
+    #submitBtn:hover {
+      background-color: #45a049;
+    }
+    #resultTable {
+      margin-top: 20px;
+      border-collapse: collapse;
+      width: 100%;
+      background-color: #fff;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+  
+    th, td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: left;
+    }
+  
+    th {
+      background-color: #f2f2f2;
+    }
+  
+    td.details {
+      white-space: pre-line;
+    }
+  
+    /* Responsive Styling */
+    @media (max-width: 600px) {
+      .form-container {
+        padding: 10px;
+      }
+  
+      #submitBtn {
+        font-size: 14px;
+      }
+  
+      #resultTable {
+        font-size: 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+<header class="header">
+    <a href="#" class="logo">CMS</a>
+    <nav class="nav-items">
+      <a href="Home.html">Home</a>
+      <div class="dropdown">
+        <button  class="dropbtn" onclick="return false;">Actions</button>
+          <div class="dropdown-content">
+           <!-- <a href="register.html" >New Member Registration</a> -->
+          <a href="update.html" >Update Member</a>
+          <a href="claim.html" >New Claim Request </a>
+           <a href="ClaimSearch.html" >Search Claim </a>
+           <a href="ClaimProcess.html" >Process Claim </a>
+          </div>
+        </div>
+        <div class="user" id="user">
+          <a href="#" class="user-link">no name</a>
+          <div class="user-img-wrapper">
+            <img src="useravatar.png" alt="User 1" style="width: 50px; height: auto;" />
+          </div>
+          <div class="user-dropdown">
+            <a href="login.html">Log Out</a>
+          </div>
+        </div>
+        
+          <script>
+            const userLink = document.querySelector('.user-link');
+            const userDropdown = document.querySelector('.user-dropdown');
+            
+            userLink.addEventListener('click', () => {
+              userDropdown.style.display = 'block';
+            });
+            
+            document.addEventListener('click', (event) => {
+              if (!userLink.contains(event.target) && !userDropdown.contains(event.target)) {
+                userDropdown.style.display = 'none';
+              }
+            });
+            </script>
+  
+      <div id="id01" class="modal">
+  
+  <form class="modal-content animate" action="/action_page.php" method="post">
+    <div class="imgcontainer">
+      <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+      <h2>User LogIn</h2>
+    </div>
+
+    <div class="container">
+      <label for="uname"><b>Email ID</b></label>
+      <input type="text" placeholder="Enter Email ID" name="uname" id="uname" required>
+
+      <label for="psw"><b>Password</b></label>
+      <input type="password" placeholder="Enter Password" name="psw" required>
+      <!-- <button class="special-button" type="submit">Login</button> -->
+      <input type="button" class="special-button" type="submit" onclick="check(this.form)" value="Login"/>
+      <label>
+        <input type="checkbox" checked="checked" name="remember"> Remember me
+      </label>
+    </div>
+    <script language="javascript">
+ function check(form)
+ {
+
+ if(form.userid.value && form.pswrd.value)
+  {
+
+// alert("Welcome to CLAIM MANAGEMENT HUB");
+var userid = document.getElementById("userid").value;
+document.write("Welcome " + userid);
+
+   }
+   else
+   {
+    alert("Invalid Email ID or Password entered!");
+    }
+   }
+
+   </script>
+    <div class="container" style="background-color:#f1f1f1">
+      <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+      <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Register</button>
+      <span class="psw">Forgot <a href="#">password?</a></span>
+    </div>
+  </form>
+</div>
+</form>
+<script language="javascript">
+  function check(form)
+  {
+ 
+  if(form.uname.value && form.psw.value)
+   {
+ 
+ alert("Welcome to CLAIM MANAGEMENT HUB");
+ 
+ var userid = document.getElementById("uname").value;
+ document.write("Welcome " + userid);
+ window.location.href = "claim.html";
+    }
+    else
+    {
+     alert("Error Password or Username");
+     }
+    }
+ 
+    </script>
+</div>
+
+<script>
+// Get the modal
+var modal = document.getElementById('id01');
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+</script>
+    </nav>
+  </header>
+  <form action="register" method="get">
+  <!-- <div>
+    <a href="index.html" style="text-decoration: none;"><button id="back">Back</button></a>
+  </div> -->
+  <h1>  Search Claim</h1>
+  <div class="form-container">
+    <label for="searchType">Search By:</label>
+    <select id="searchType">
+      <option value="id">By Id</option>
+      <option value="name">By Name</option>
+      <option value="date">By Date</option>
+    </select>
+
+    <div id="idField">
+      <label for="id">Enter Id:</label>
+      <input type="text" id="id" />
+    </div>
+
+    <div id="nameField">
+      <label for="name">Enter Name:</label>
+      <input type="text" id="name" />
+    </div>
+
+    <div id="dateFields">
+      <label for="fromDate">From Date:</label>
+      <input type="date" id="fromDate" />
+  
+      <label for="toDate">To Date:</label>
+      <input type="date" id="toDate" />
+    </div>
+
+    <button id="submitBtn">Submit</button>
+  </div>
+
+  <table id="resultTable">
+    <thead>
+      <tr>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Insurance</th>
+        <th>Insurance Type</th>
+        <th>Claim Request Date</th>
+        <th>Claim Reason</th>
+        <th>Details</th>
+      </tr>
+    </thead>
+    <tbody id="resultBody"></tbody>
+  </table>
+
+  <script>
+    // JavaScript code for DOM manipulation and fetching data
+
+    // Function to show/hide fields based on selected search type
+
+    document.getElementById("back").addEventListener("")
+    function toggleFields() {
+      const searchType = document.getElementById('searchType').value;
+      const idField = document.getElementById('idField');
+      const nameField = document.getElementById('nameField');
+      const dateFields = document.getElementById('dateFields');
+
+      idField.style.display = searchType === 'id' ? 'block' : 'none';
+      nameField.style.display = searchType === 'name' ? 'block' : 'none';
+      dateFields.style.display = searchType === 'date' ? 'block' : 'none';
+    }
+
+    // Function to format the date as yyyy-mm-dd
+    function formatDate(date) {
+      const year = date.getFullYear();
+      let month = date.getMonth() + 1;
+      month = month < 10 ?
+            '0' + month : month;
+      const day = date.getDate() < 10 ? '0' + date.getDate() : date.getDate();
+      return `${year}-${month}-${day}`;
+    }
+
+    // Function to create table rows based on the retrieved data
+    function createTableRows(data) {
+      const tbody = document.getElementById('resultBody');
+      tbody.innerHTML = '';
+
+      if (Array.isArray(data)) {
+        data.forEach((member) => {
+          const row = document.createElement('tr');
+          row.innerHTML = `
+            <td>${member.firstName}</td>
+            <td>${member.lastName}</td>
+            <td>${member.insurance}</td>
+            <td>${member.insuranceType}</td>
+            <td>${member.claimRequestDate}</td>
+            <td>${member.claimReason}</td>
+            <td class="details">${member.details}</td>
+          `;
+          tbody.appendChild(row);
+        });
+      } else {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+          <td>${data.firstName}</td>
+          <td>${data.lastName}</td>
+          <td>${data.insurance}</td>
+          <td>${data.insuranceType}</td>
+          <td>${data.claimRequestDate}</td>
+          <td>${data.claimReason}</td>
+          <td class="details">${data.details}</td>
+        `;
+        tbody.appendChild(row);
+      }
+    }
+
+    // Function to handle form submission
+    function handleSubmit(event) {
+        console.log("run");
+      event.preventDefault();
+
+      const searchType = document.getElementById('searchType').value;
+      let url = '';
+      let requestBody = {};
+
+      if (searchType === 'id') {
+        const memberId = document.getElementById('id').value;
+        url = `http://localhost:8081/member/id/${memberId}`;
+      } else if (searchType === 'name') {
+        const memberName = document.getElementById('name').value;
+        url = `http://localhost:8081/member/name/${memberName}`;
+      } else if (searchType === 'date') {
+        const fromDate = document.getElementById('fromDate').value;
+        const toDate = document.getElementById('toDate').value;
+        url = `http://localhost:8081/members/dates/${toDate}/${fromDate}`;
+      }
+
+      fetch(url)
+        .then((response) => response.json())
+        .then((data) => {
+          createTableRows(data);
+        })
+        .catch((error) => {
+          console.error('Error:', error);
+        });
+    }
+
+    // Event listeners
+    document.getElementById('searchType').addEventListener('change', toggleFields);
+    document.getElementById('submitBtn').addEventListener('click', handleSubmit);
+  </script>
+  </form><br><br><br>
+  <footer class="footer">
+    <div class="bottom-links">
+      <div class="links">
+        <span>More Info</span>
+        <a href="#">Home</a>
+        <div class="dropdown">
+          <!-- <button class="dropbtn">Actions</button> -->
+          <div class="dropdown-content">
+            <!-- <a href="register.html" >New Member Registration</a> -->
+            <a href="#" >Update Member</a>
+            <a href="claim.html" >New Claim Request </a>
+             <a href="ClaimSearch.html" >Search Claim </a>
+             <a href="ClaimProcess.html" >Process Claim </a>
+          </div>
+        </div>
+        <a href="#">About</a>
+        <a href="#">Contact</a>
+      </div>
+      
+      <div class="links">
+        <span>Social Links</span>
+        <a href="#"><i class="fab fa-facebook"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+      </div>
+      <div class="info1">
+       
+        <p>Updated date:<p id="Updated_DateTime">Updated date:</p></p>
+      </div>
+      
+      
+      <script>
+        const date = new Date(document.lastModified);
+        document.getElementById("Updated_DateTime").innerHTML = date;
+        </script>
+    </div>
+  </footer>
+</body>
+</html>

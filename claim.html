@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Claims Management System</title>
+   	<link rel="stylesheet" href="claim.css">
+       <link rel="stylesheet" href="login.css">
+
+
+<script>
+function populateClaimReason() {
+    var insuranceType = document.getElementById("Insurance Type").value;
+    var claimReasonSelect = document.getElementById("Claim Reason");
+    claimReasonSelect.innerHTML = "";
+
+    if (insuranceType === "vehicle") {
+        var option1 = document.createElement("option");
+        option1.value = "repair";
+        option1.text = "Repair";
+        claimReasonSelect.appendChild(option1);
+
+        var option2 = document.createElement("option");
+        option2.value = "stolen";
+        option2.text = "Stolen";
+        claimReasonSelect.appendChild(option2);
+    } else if (insuranceType === "home") {
+        var option1 = document.createElement("option");
+        option1.value = "renovate";
+        option1.text = "Renovate";
+        claimReasonSelect.appendChild(option1);
+
+        var option2 = document.createElement("option");
+        option2.value = "destroyed";
+        option2.text = "Destroyed";
+        claimReasonSelect.appendChild(optsion2);
+    } else if (insuranceType === "life") {
+        var option1 = document.createElement("option");
+        option1.value = "treatment-claim";
+        option1.text = "Treatment Claim";
+        claimReasonSelect.appendChild(option1);
+
+        var option2 = document.createElement("option");
+        option2.value = "death-claim";
+        option2.text = "Death Claim";
+        claimReasonSelect.appendChild(option2);
+    }
+}
+function displayFinalClaimAmount() {
+	var claimReasonSelect = document.getElementById("Claim Reason");
+    var finalClaimAmountInput = document.getElementById("final-claim-amount");
+    
+    var insuranceType = document.getElementById("Insurance Type").value;
+    //var claimReason = document.getElementById("Claim Reason").value;
+    var claimReason = claimReasonSelect.value;
+    //var maxClaimAmount = document.getElementById("Maximum Claim Amount").value;
+	var maxClaimAmount = parseFloat(document.getElementById("Maximum Claim Amount").value);
+    var finalClaimAmount = calculateFinalClaimAmount(claimReason, insuranceType, maxClaimAmount);
+    finalClaimAmountInput.value = finalClaimAmount.toFixed(2);
+    //document.getElementById("final-claim-amount").value = finalClaimAmount.toFixed(2);
+}
+function calculateFinalClaimAmount(claimReason, insuranceType, maxClaimAmount) {
+	  // Calculate and return the final claim amount based on the claim reason and insurance type
+	  var finalClaimAmount = 0;
+	  
+	  if (insuranceType === 'vehicle') {
+	    if (claimReason === 'repair') {
+	      finalClaimAmount = 0.4 * maxClaimAmount;
+	    } else if (claimReason === 'stolen') {
+	      finalClaimAmount = 0.7 * maxClaimAmount;
+	    }
+	  } else if (insuranceType === 'home') {
+	    if (claimReason === 'renovate') {
+	      finalClaimAmount = 0.5 * maxClaimAmount;
+	    } else if (claimReason === 'destroyed') {
+	      finalClaimAmount = 0.7 * maxClaimAmount;
+	    }
+	  } else if (insuranceType === 'life') {
+	    if (claimReason === 'treatment-claim') {
+	      finalClaimAmount = maxClaimAmount - (0.05 * maxClaimAmount);
+	    } else if (claimReason === 'death-claim') {
+	      finalClaimAmount = maxClaimAmount;
+	    }
+	  }
+	  document.getElementById('finalClaimAmount').value = finalClaimAmount.toFixed(2);
+	  return finalClaimAmount;
+	}
+</script>
+<script src="script1.js"></script>
+</head>
+<body>
+    <header class="header">
+        <a href="#" class="logo">CMS</a>
+        <nav class="nav-items">
+          <a href="Home.html">Home</a>
+          <div class="dropdown">
+            <button  class="dropbtn" onclick="return false;">Actions</button>
+              <div class="dropdown-content">
+               <!-- <a href="register.html" >New Member Registration</a> -->
+              <a href="update.html" >Update Member</a>
+              <a href="claim.html" >New Claim Request </a>
+               <a href="ClaimSearch.html" >Search Claim </a>
+               <a href="ClaimProcess.html" >Process Claim </a>
+              </div>
+            </div>
+            <div class="user" id="user">
+              <a href="#" class="user-link">no name</a>
+              <div class="user-img-wrapper">
+                <img src="useravatar.png" alt="User 1" style="width: 50px; height: auto;" />
+              </div>
+              <div class="user-dropdown">
+                <a href="login.html">Log Out</a>
+              </div>
+            </div>
+            
+              <script>
+                const userLink = document.querySelector('.user-link');
+                const userDropdown = document.querySelector('.user-dropdown');
+                
+                userLink.addEventListener('click', () => {
+                  userDropdown.style.display = 'block';
+                });
+                
+                document.addEventListener('click', (event) => {
+                  if (!userLink.contains(event.target) && !userDropdown.contains(event.target)) {
+                    userDropdown.style.display = 'none';
+                  }
+                });
+                </script>
+          <!-- <button class="special-button" onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button> -->
+          <div id="id01" class="modal">
+      
+      <form class="modal-content animate" action="/action_page.php" method="post">
+        <div class="imgcontainer">
+          <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+          <h2>User LogIn</h2>
+        </div>
+    
+        <div class="container">
+          <label for="uname"><b>Email ID</b></label>
+          <input type="text" placeholder="Enter Email ID" name="uname" id="uname" required>
+    
+          <label for="psw"><b>Password</b></label>
+          <input type="password" placeholder="Enter Password" name="psw" required>
+          <!-- <button class="special-button" type="submit">Login</button> -->
+          <input type="button" class="special-button" type="submit" onclick="check(this.form)" value="Login"/>
+          <label>
+            <input type="checkbox" checked="checked" name="remember"> Remember me
+          </label>
+        </div>
+        <script language="javascript">
+     function check(form)
+     {
+    
+     if(form.userid.value && form.pswrd.value)
+      {
+    
+    // alert("Welcome to CLAIM MANAGEMENT HUB");
+    var userid = document.getElementById("userid").value;
+    document.write("Welcome " + userid);
+    
+       }
+       else
+       {
+        alert("Invalid Email ID or Password entered!");
+        }
+       }
+    
+       </script>
+        <div class="container" style="background-color:#f1f1f1">
+          <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+          <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Register</button>
+          <span class="psw">Forgot <a href="#">password?</a></span>
+        </div>
+      </form>
+    </div>
+    </form>
+    <script language="javascript">
+      function check(form)
+      {
+     
+      if(form.uname.value && form.psw.value)
+       {
+     
+     alert("Welcome to CLAIM MANAGEMENT HUB");
+     
+     var userid = document.getElementById("uname").value;
+     document.write("Welcome " + userid);
+     window.location.href = "claim.html";
+        }
+        else
+        {
+         alert("Error Password or Username");
+         }
+        }
+     
+        </script>
+    </div>
+    
+    <script>
+    // Get the modal
+    var modal = document.getElementById('id01');
+    
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+    </script>
+        </nav>
+      </header>
+  <h1 class="member-claim-request"></h1>
+  <form action="register" method="get" onsubmit="return validateForm()">
+    <style>
+        .center-align {
+          text-align: center;
+          font-weight: bold;
+          font-size: 24px;
+          color: navy;
+        }
+      </style>
+      
+      <p class="center-align">Member Claim Request</p>
+    <label for="Member ID">Member ID:</label>
+    <input type="text" id="Member ID" name="Member ID" required>
+    
+    <label for="First Name">First Name</label>
+      <input type="text" name="First Name" pattern="[A-Za-z]+" required><br>
+      <label for="Last Name">Last Name</label>
+      <input type="text" name="Last Name" pattern="[A-Za-z]+" required><br>
+    <label for="Nominee Count">Nominee Count</label>
+    <select name="Nominee Count" required>
+      <option value="" disabled selected>-Please Select-</option>
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+    </select>
+    
+    <label for="Maximum Claim Amount">Maximum Claim Amount:</label>
+    <input type="number" name="Maximum Claim Amount" min="1" required>
+    
+    <label for="Insurance Type">Insurance Type</label>
+    <select name="Insurance Type" id="Insurance Type" onchange="populateClaimReason()" required>
+      <option value="" disabled selected>-Please Select-</option>
+      <option value="vehicle">Vehicle Insurance</option>
+      <option value="home">Home Insurance</option>
+      <option value="life">Life Insurance</option>
+    </select>
+    
+    <label for="Request Date">Request Date</label>
+    <!-- <input type="date" id="Request Date" name="Request Date" value="<?php echo date('Y-m-d'); ?>" required> -->
+    <input type="date" id="requestDate" name="requestDate" required>
+				
+				<script>
+				  // Set the current date as the default value
+				  document.getElementById("requestDate").value = new Date().toISOString().split("T")[0];
+				</script>
+
+
+
+    <label for="Claim Reason">Claim Reason</label>
+    <select name="Claim Reason" id="Claim Reason" required>
+      <option value="" disabled selected>-Please Select-</option>
+    </select>
+    <p><br>Insurance Amount</p>
+    <label for="insuredAmount">Insured Amount</label>
+      <!-- <input type="number" id="insuredAmount" name="insuredAmount"><br> -->
+
+      <input type="number" id="insuredAmount" placeholder="Enter Insured amount" min="1" name="insuredAmount" required><br><br>
+      <!-- <input id="max" type="button" onclick="myfun()" value="Maximum claimable amount is" style="height:2em; "/> -->
+                    
+      <!-- <input id="demo" name="demo" readonly style="height:1.8em; "><br> -->
+      <script>
+          function myfun(){
+              
+              var x=document.getElementById("insuredAmount").value;
+              var y=document.getElementById("insuranceType").value;
+              
+              if(y==="life"){
+                  x=x*1;
+              }
+              else if(y==="vehicle"){
+                  x=x*0.8;
+              }
+              else
+              {
+                  x=x*0.91;
+                  
+              }
+              
+              document.getElementById("demo").value=x;
+              //document.write(x);
+              return x;
+              
+          }
+          </script>
+    <br>
+    <label for="Final Claim Amount">Final Claim Amount:</label>
+    <input id="final" type="button" onclick="myfunct()" value="Final claim amount is" style="height:1.8em"/>
+
+    <input id="demoa" name="demoa" style="height:1.6em" readonly ><br>
+    <script>
+        function myfunct() {
+            var a = document.getElementById("insuredAmount").value;
+
+            var b = document.getElementById("Claim Reason").value;
+
+            if (b === "repair")
+            {
+                a = a * 0.40;
+            } else if (b === "stolen") {
+                a = a * 0.70;
+            } else if (b === "renovate")
+            {
+                a = a * 0.50;
+            } else if (b === "destroyed")
+            {
+                a = a * 0.70;
+            } else if (b === "treatment-claim")
+            {
+                a = a * 0.95;
+            } else if (b === "death-claim")
+            {
+                a = a * 1;
+            } else
+            {
+                a = a * 0.2;
+
+            }
+            document.getElementById("demoa").value = a;
+            //document.write(x);
+            return a;
+        }
+    </script>
+
+
+        
+    <div id="foot" class="button-container">
+      <!-- <button type="submit" value="Submit">Submit</button> -->
+      <button type="button" onclick="window.location.href = 'Home.html'" class="cancelbtn">Submit</button>
+      <button type="reset" value="Reset">Reset</button>
+    </div>
+    <script>
+      // Add event listener to the Submit button
+      document.getElementById("submitButton").addEventListener("click", function() {
+        // Retrieve the Member ID and Request Date values
+        var memberId = document.getElementById("Member ID").value;
+        var requestDate = document.getElementById("Request Date").value;
+    
+        // Create the message content
+        var message = "Dear Admin,\nThe claim request for " + memberId + " has been posted. Your claim will be processed before " + requestDate;
+    
+        // Display the message on the screen
+        alert(message);
+      });
+    </script>
+    
+  </form>
+  <footer class="footer">
+    <div class="copy">&copy; 2023 Developer</div>
+    <div class="bottom-links">
+      <div class="links">
+        <span>More Info</span>
+        <a href="#">Home</a>
+        <div class="dropdown">
+          <!-- <button class="dropbtn">Actions</button> -->
+          <div class="dropdown-content">
+            <!-- <a href="register.html" >New Member Registration</a> -->
+            <a href="update.html" >Update Member</a>
+            <a href="claim.html" >New Claim Request </a>
+             <a href="aparna.html" >Search Claim </a>
+             <a href="kashish.html" >Process Claim </a>
+          </div>
+        </div>
+        <a href="#">About</a>
+        <a href="#">Contact</a>
+      </div>
+      
+      <div class="links">
+        <span>Social Links</span>
+        <a href="#"><i class="fab fa-facebook"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+      </div>
+      <div class="info1">
+        
+        <p>Updated date:<p id="Updated_DateTime">Updated date:</p></p>
+      </div>
+      
+      
+      <script>
+        const date = new Date(document.lastModified);
+        document.getElementById("Updated_DateTime").innerHTML = date;
+
+        function updateInfo() {
+            const firstName = document.getElementById("firstNameInput").value;
+            const lastName = document.getElementById("lastNameInput").value;
+
+            const updatedByElement = document.getElementById("updatedBy");
+            updatedByElement.textContent = "Updated by: " + firstName + " " + lastName;
+        }
+        </script>
+    </div>
+  </footer>
+</body>
+</html>
