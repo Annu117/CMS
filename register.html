@@ -2,9 +2,10 @@
 <html>
   <head>
     <title>Claims Management System</title>
-    <link rel="stylesheet" href="login.css">
+    
     <link rel="stylesheet" href="register.css">
-
+    <link rel="stylesheet" href="login.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <script>
   //MEMBER REGISTRATION
     document.getElementById('member-registration-form').addEventListener('register', function(event) {
@@ -100,7 +101,7 @@
       <header class="header">
     <a href="#" class="logo">CMS</a>
     <nav class="nav-items">
-      <a href="login.html">Home</a>
+      <a href="index.html">Home</a>
       <div class="dropdown">
         <button  class="dropbtn" onclick="return false;">Actions</button>
           <div class="dropdown-content">
@@ -113,51 +114,51 @@
         </div>
       <button class="special-button" onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button>
       <div id="id01" class="modal">
-  <form class="modal-content animate" action="/action_page.php" method="post">
-    <div class="imgcontainer">
-      <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
-      <!-- <img scr="background.jpg" alt="me" width="460" height="345"> -->
-      <h2>User LogIn</h2>
-    </div>
-    <div class="container">
-      <label for="uname"><b>Email ID</b></label>
-      <input type="email" placeholder="Enter Email ID" name="uname" id="uname" required>
-      <label for="psw"><b>Password</b></label>
-      <input type="password" placeholder="Enter Password" name="psw" required>
-      <input type="button" class="special-button" type="submit" onclick="check(this.form)" value="Login"/>
-      <label>
-        <input type="checkbox" checked="checked" name="remember"> Remember me
-      </label>
-    </div>
-    <script language="javascript">
- function check(form)
- {
+        <form class="modal-content animate" action="/action_page.php" method="post">
+          <div class="imgcontainer">
+            <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+            <!-- <img scr="background.jpg" alt="me" width="460" height="345"> -->
+            <h2>User LogIn</h2>
+          </div>
+          <div class="container">
+            <label for="uname"><b>Email ID</b></label>
+            <input type="email" id="uname"  placeholder="Enter Email ID"  name="uname" required><br>
+            <!-- <input type="email" name="uname" id="uname" placeholder="Enter Email ID" required> -->
+            <label for="psw"><b>Password</b></label>
+            <input type="password" placeholder="Enter Password" name="psw" required>
+            <input type="button" class="special-button" type="submit" onclick="check(this.form)" style="width:auto;" value="Login"/>
+            <label>
+              <input type="checkbox" checked="checked" name="remember"> Remember me
+            </label>
+          </div>
+          <script language="javascript">
+       function check(form) {
+  var email = form.uname.value; // Get the value of the email input field
+  var password = form.psw.value; // Get the value of the password input field
 
- if(form.userid.value && form.pswrd.value)
-  {
+  if (email.includes("@") && password) {
+    // Email contains "@" and password is not empty, continue with login
+    var userid = email.split("@")[0]; // Extract the username from the email
+    document.write("Welcome " + userid);
+  } else {
+    // Either email doesn't contain "@" or password is empty, display error message
+    alert("Invalid email format or password not entered. Please enter a valid email address and password.");
+  }
+}
 
-// alert("Welcome to CLAIM MANAGEMENT HUB");
-var userid = document.getElementById("userid").value;
-document.write("Welcome " + userid);
-
-   }
-   else
-   {
-    alert("Wrong Password or EmailId Entered");
-    }
-   }
-
-   </script>
-    <div class="container" style="background-color:#f1f1f1">
-      <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
-      <!-- <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Register</button> -->
-      <button type="button" onclick="window.location.href = 'register.html'" class="cancelbtn">Register</button>
-
-      <span class="psw">Forgot <a href="#">password?</a></span>
-    </div>
-  </form>
-</div>
-</form>
+      
+      
+         </script>
+          <div class="container" style="background-color:#f1f1f1">
+            <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+            <!-- <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Register</button> -->
+            <button type="button" onclick="window.location.href = 'register.html'" class="cancelbtn">Register</button>
+      
+            <span class="psw"> <a href="#">Forgot password?</a></span>
+          </div>
+        </form>
+      </div>
+      </form>
 <script language="javascript">
   function check(form)
   {

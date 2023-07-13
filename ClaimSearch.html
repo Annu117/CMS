@@ -3,27 +3,37 @@
 <head>
 
   <title>Search Claim</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
   <link rel="stylesheet" href="login.css">
+  <!-- <link rel="stylesheet" href="claim.css"> -->
   <style>
     /* CSS Styling */
-    body {
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    /* body {
       font-family: Arial, sans-serif;
       background-color: #f1f1f1;
       margin: 0;
       padding: 20px;
-    }
-  
-    h1 {
-      text-align: center;
-    }
-  
+    } */
     .form-container {
-      max-width: 400px;
+      max-width: 600px;
+      /* max-width: 400px; */
       margin: 0 auto;
       background-color: #fff;
       padding: 20px;
       border-radius: 8px;
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+  
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
     }
   
     label {
@@ -43,11 +53,12 @@
       display: none;
     }
   
-    #submitBtn {
+    #submitBtn,
+    #backBtn {
       display: block;
       width: 100%;
       padding: 12px;
-      background-color: #4CAF50;
+      background-color: rgb(9, 9, 87);
       color: #fff;
       border: none;
       border-radius: 4px;
@@ -55,25 +66,23 @@
       font-size: 16px;
       transition: background-color 0.3s;
     }
-    #back{
-      display: inline;
-      padding: 12px;
-      text-align: left;
-      background-color: #4CAF50;
-      color: #fff;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-      font-size: 16px;
-      transition: background-color 0.3s;
+    #submitBtn:hover,
+    #backBtn:hover {
+      /* background-color: #5d56a1; */
+      /* opacity: 0.8; */
+      background-color: #006b9f;
     }
-    #backL:hover{
-      background-color: #45a049;
-    }
-  
-    #submitBtn:hover {
-      background-color: #45a049;
-    }
+
+    /* #resultTable {
+      margin-top: 20px;
+      border-collapse: collapse;
+      width: 100%;
+      background-color: #fff;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    } */
+
+
+
     #resultTable {
       margin-top: 20px;
       border-collapse: collapse;
@@ -102,7 +111,8 @@
         padding: 10px;
       }
   
-      #submitBtn {
+      #submitBtn,
+      #backBtn {
         font-size: 14px;
       }
   
@@ -128,12 +138,12 @@
           </div>
         </div>
         <div class="user" id="user">
-          <a href="#" class="user-link">no name</a>
+          <a href="#" class="user-link">Name</a>
           <div class="user-img-wrapper">
             <img src="useravatar.png" alt="User 1" style="width: 50px; height: auto;" />
           </div>
           <div class="user-dropdown">
-            <a href="login.html">Log Out</a>
+            <a href="index.html">Log Out</a>
           </div>
         </div>
         
@@ -265,7 +275,8 @@ window.onclick = function(event) {
       <input type="date" id="toDate" />
     </div>
 
-    <button id="submitBtn">Submit</button>
+    <button id="submitBtn">Search</button>
+    <!-- <button id="backBtn">Back</button> -->
   </div>
 
   <table id="resultTable">
@@ -346,7 +357,7 @@ window.onclick = function(event) {
 
     // Function to handle form submission
     function handleSubmit(event) {
-        console.log("run");
+        // console.log("run");
       event.preventDefault();
 
       const searchType = document.getElementById('searchType').value;
@@ -355,14 +366,14 @@ window.onclick = function(event) {
 
       if (searchType === 'id') {
         const memberId = document.getElementById('id').value;
-        url = `http://localhost:8081/member/id/${memberId}`;
+        url = `http://localhost:5500/member/id/${memberId}`;
       } else if (searchType === 'name') {
         const memberName = document.getElementById('name').value;
-        url = `http://localhost:8081/member/name/${memberName}`;
+        url = `http://localhost:5500/member/name/${memberName}`;
       } else if (searchType === 'date') {
         const fromDate = document.getElementById('fromDate').value;
         const toDate = document.getElementById('toDate').value;
-        url = `http://localhost:8081/members/dates/${toDate}/${fromDate}`;
+        url = `http://localhost:5500/members/dates/${toDate}/${fromDate}`;
       }
 
       fetch(url)
@@ -378,6 +389,9 @@ window.onclick = function(event) {
     // Event listeners
     document.getElementById('searchType').addEventListener('change', toggleFields);
     document.getElementById('submitBtn').addEventListener('click', handleSubmit);
+    document.getElementById('backBtn').addEventListener('click', () => {
+        window.location.href = 'Home.html';
+    });
   </script>
   </form><br><br><br>
   <footer class="footer">

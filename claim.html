@@ -4,6 +4,8 @@
     <title>Claims Management System</title>
    	<link rel="stylesheet" href="claim.css">
        <link rel="stylesheet" href="login.css">
+       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
 
 
 <script>
@@ -44,45 +46,45 @@ function populateClaimReason() {
         claimReasonSelect.appendChild(option2);
     }
 }
-function displayFinalClaimAmount() {
-	var claimReasonSelect = document.getElementById("Claim Reason");
-    var finalClaimAmountInput = document.getElementById("final-claim-amount");
+// function displayFinalClaimAmount() {
+// 	var claimReasonSelect = document.getElementById("Claim Reason");
+//     var finalClaimAmountInput = document.getElementById("final-claim-amount");
     
-    var insuranceType = document.getElementById("Insurance Type").value;
-    //var claimReason = document.getElementById("Claim Reason").value;
-    var claimReason = claimReasonSelect.value;
-    //var maxClaimAmount = document.getElementById("Maximum Claim Amount").value;
-	var maxClaimAmount = parseFloat(document.getElementById("Maximum Claim Amount").value);
-    var finalClaimAmount = calculateFinalClaimAmount(claimReason, insuranceType, maxClaimAmount);
-    finalClaimAmountInput.value = finalClaimAmount.toFixed(2);
-    //document.getElementById("final-claim-amount").value = finalClaimAmount.toFixed(2);
-}
-function calculateFinalClaimAmount(claimReason, insuranceType, maxClaimAmount) {
-	  // Calculate and return the final claim amount based on the claim reason and insurance type
-	  var finalClaimAmount = 0;
+//     var insuranceType = document.getElementById("Insurance Type").value;
+//     //var claimReason = document.getElementById("Claim Reason").value;
+//     var claimReason = claimReasonSelect.value;
+//     //var maxClaimAmount = document.getElementById("Maximum Claim Amount").value;
+// 	var maxClaimAmount = parseFloat(document.getElementById("Maximum Claim Amount").value);
+//     var finalClaimAmount = calculateFinalClaimAmount(claimReason, insuranceType, maxClaimAmount);
+//     finalClaimAmountInput.value = finalClaimAmount.toFixed(2);
+//     //document.getElementById("final-claim-amount").value = finalClaimAmount.toFixed(2);
+// }
+// function calculateFinalClaimAmount(claimReason, insuranceType, maxClaimAmount) {
+// 	  // Calculate and return the final claim amount based on the claim reason and insurance type
+// 	  var finalClaimAmount = 0;
 	  
-	  if (insuranceType === 'vehicle') {
-	    if (claimReason === 'repair') {
-	      finalClaimAmount = 0.4 * maxClaimAmount;
-	    } else if (claimReason === 'stolen') {
-	      finalClaimAmount = 0.7 * maxClaimAmount;
-	    }
-	  } else if (insuranceType === 'home') {
-	    if (claimReason === 'renovate') {
-	      finalClaimAmount = 0.5 * maxClaimAmount;
-	    } else if (claimReason === 'destroyed') {
-	      finalClaimAmount = 0.7 * maxClaimAmount;
-	    }
-	  } else if (insuranceType === 'life') {
-	    if (claimReason === 'treatment-claim') {
-	      finalClaimAmount = maxClaimAmount - (0.05 * maxClaimAmount);
-	    } else if (claimReason === 'death-claim') {
-	      finalClaimAmount = maxClaimAmount;
-	    }
-	  }
-	  document.getElementById('finalClaimAmount').value = finalClaimAmount.toFixed(2);
-	  return finalClaimAmount;
-	}
+// 	  if (insuranceType === 'vehicle') {
+// 	    if (claimReason === 'repair') {
+// 	      finalClaimAmount = 0.4 * maxClaimAmount;
+// 	    } else if (claimReason === 'stolen') {
+// 	      finalClaimAmount = 0.7 * maxClaimAmount;
+// 	    }
+// 	  } else if (insuranceType === 'home') {
+// 	    if (claimReason === 'renovate') {
+// 	      finalClaimAmount = 0.5 * maxClaimAmount;
+// 	    } else if (claimReason === 'destroyed') {
+// 	      finalClaimAmount = 0.7 * maxClaimAmount;
+// 	    }
+// 	  } else if (insuranceType === 'life') {
+// 	    if (claimReason === 'treatment-claim') {
+// 	      finalClaimAmount = maxClaimAmount - (0.05 * maxClaimAmount);
+// 	    } else if (claimReason === 'death-claim') {
+// 	      finalClaimAmount = maxClaimAmount;
+// 	    }
+// 	  }
+// 	  document.getElementById('finalClaimAmount').value = finalClaimAmount.toFixed(2);
+// 	  return finalClaimAmount;
+// 	}
 </script>
 <script src="script1.js"></script>
 </head>
@@ -102,12 +104,12 @@ function calculateFinalClaimAmount(claimReason, insuranceType, maxClaimAmount) {
               </div>
             </div>
             <div class="user" id="user">
-              <a href="#" class="user-link">no name</a>
-              <div class="user-img-wrapper">
+              <a href="#" class="user-link">Name</a>
+             
                 <img src="useravatar.png" alt="User 1" style="width: 50px; height: auto;" />
-              </div>
+             
               <div class="user-dropdown">
-                <a href="login.html">Log Out</a>
+                <a href="index.html">Log Out</a>
               </div>
             </div>
             
@@ -127,7 +129,7 @@ function calculateFinalClaimAmount(claimReason, insuranceType, maxClaimAmount) {
                 </script>
           <!-- <button class="special-button" onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button> -->
           <div id="id01" class="modal">
-      
+<!--       
       <form class="modal-content animate" action="/action_page.php" method="post">
         <div class="imgcontainer">
           <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
@@ -140,8 +142,11 @@ function calculateFinalClaimAmount(claimReason, insuranceType, maxClaimAmount) {
     
           <label for="psw"><b>Password</b></label>
           <input type="password" placeholder="Enter Password" name="psw" required>
-          <!-- <button class="special-button" type="submit">Login</button> -->
-          <input type="button" class="special-button" type="submit" onclick="check(this.form)" value="Login"/>
+          // <input type="button" class="special-button" type="submit" onclick="check(this.form)" value="Login"/>
+          <div class="button-container">
+            <input type="submit" class="special-button"onclick="check(this.form)" value="Login">
+            <input type="reset" class="special-button" value="Reset">
+          </div>
           <label>
             <input type="checkbox" checked="checked" name="remember"> Remember me
           </label>
@@ -172,7 +177,7 @@ function calculateFinalClaimAmount(claimReason, insuranceType, maxClaimAmount) {
         </div>
       </form>
     </div>
-    </form>
+    </form> -->
     <script language="javascript">
       function check(form)
       {
@@ -251,6 +256,10 @@ function calculateFinalClaimAmount(claimReason, insuranceType, maxClaimAmount) {
     <input type="date" id="requestDate" name="requestDate" required>
 				
 				<script>
+          // Set the current date as the maximum allowed value
+          var currentDate = new Date().toISOString().split("T")[0];
+          document.getElementById("requestDate").setAttribute("max", currentDate);
+
 				  // Set the current date as the default value
 				  document.getElementById("requestDate").value = new Date().toISOString().split("T")[0];
 				</script>
@@ -367,8 +376,8 @@ function calculateFinalClaimAmount(claimReason, insuranceType, maxClaimAmount) {
             <!-- <a href="register.html" >New Member Registration</a> -->
             <a href="update.html" >Update Member</a>
             <a href="claim.html" >New Claim Request </a>
-             <a href="aparna.html" >Search Claim </a>
-             <a href="kashish.html" >Process Claim </a>
+             <a href="ClaimSearch.html" >Search Claim </a>
+             <a href="ClaimProcess.html" >Process Claim </a>
           </div>
         </div>
         <a href="#">About</a>
