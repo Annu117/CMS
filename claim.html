@@ -46,45 +46,6 @@ function populateClaimReason() {
         claimReasonSelect.appendChild(option2);
     }
 }
-// function displayFinalClaimAmount() {
-// 	var claimReasonSelect = document.getElementById("Claim Reason");
-//     var finalClaimAmountInput = document.getElementById("final-claim-amount");
-    
-//     var insuranceType = document.getElementById("Insurance Type").value;
-//     //var claimReason = document.getElementById("Claim Reason").value;
-//     var claimReason = claimReasonSelect.value;
-//     //var maxClaimAmount = document.getElementById("Maximum Claim Amount").value;
-// 	var maxClaimAmount = parseFloat(document.getElementById("Maximum Claim Amount").value);
-//     var finalClaimAmount = calculateFinalClaimAmount(claimReason, insuranceType, maxClaimAmount);
-//     finalClaimAmountInput.value = finalClaimAmount.toFixed(2);
-//     //document.getElementById("final-claim-amount").value = finalClaimAmount.toFixed(2);
-// }
-// function calculateFinalClaimAmount(claimReason, insuranceType, maxClaimAmount) {
-// 	  // Calculate and return the final claim amount based on the claim reason and insurance type
-// 	  var finalClaimAmount = 0;
-	  
-// 	  if (insuranceType === 'vehicle') {
-// 	    if (claimReason === 'repair') {
-// 	      finalClaimAmount = 0.4 * maxClaimAmount;
-// 	    } else if (claimReason === 'stolen') {
-// 	      finalClaimAmount = 0.7 * maxClaimAmount;
-// 	    }
-// 	  } else if (insuranceType === 'home') {
-// 	    if (claimReason === 'renovate') {
-// 	      finalClaimAmount = 0.5 * maxClaimAmount;
-// 	    } else if (claimReason === 'destroyed') {
-// 	      finalClaimAmount = 0.7 * maxClaimAmount;
-// 	    }
-// 	  } else if (insuranceType === 'life') {
-// 	    if (claimReason === 'treatment-claim') {
-// 	      finalClaimAmount = maxClaimAmount - (0.05 * maxClaimAmount);
-// 	    } else if (claimReason === 'death-claim') {
-// 	      finalClaimAmount = maxClaimAmount;
-// 	    }
-// 	  }
-// 	  document.getElementById('finalClaimAmount').value = finalClaimAmount.toFixed(2);
-// 	  return finalClaimAmount;
-// 	}
 </script>
 <script src="script1.js"></script>
 </head>
@@ -104,10 +65,12 @@ function populateClaimReason() {
               </div>
             </div>
             <div class="user" id="user">
-              <a href="#" class="user-link">Name</a>
-             
-                <img src="useravatar.png" alt="User 1" style="width: 50px; height: auto;" />
-             
+              <!-- <a href="#" class="user-link">Name</a> -->
+              
+              <div class="user-img-wrapper">
+                <a href="#" class="user-link">
+                <img src="useravatar.png" alt="User 1" style="width: 50px; height: auto;" /></a>
+              </div>
               <div class="user-dropdown">
                 <a href="index.html">Log Out</a>
               </div>
@@ -129,55 +92,7 @@ function populateClaimReason() {
                 </script>
           <!-- <button class="special-button" onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button> -->
           <div id="id01" class="modal">
-<!--       
-      <form class="modal-content animate" action="/action_page.php" method="post">
-        <div class="imgcontainer">
-          <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
-          <h2>User LogIn</h2>
-        </div>
-    
-        <div class="container">
-          <label for="uname"><b>Email ID</b></label>
-          <input type="text" placeholder="Enter Email ID" name="uname" id="uname" required>
-    
-          <label for="psw"><b>Password</b></label>
-          <input type="password" placeholder="Enter Password" name="psw" required>
-          // <input type="button" class="special-button" type="submit" onclick="check(this.form)" value="Login"/>
-          <div class="button-container">
-            <input type="submit" class="special-button"onclick="check(this.form)" value="Login">
-            <input type="reset" class="special-button" value="Reset">
-          </div>
-          <label>
-            <input type="checkbox" checked="checked" name="remember"> Remember me
-          </label>
-        </div>
-        <script language="javascript">
-     function check(form)
-     {
-    
-     if(form.userid.value && form.pswrd.value)
-      {
-    
-    // alert("Welcome to CLAIM MANAGEMENT HUB");
-    var userid = document.getElementById("userid").value;
-    document.write("Welcome " + userid);
-    
-       }
-       else
-       {
-        alert("Invalid Email ID or Password entered!");
-        }
-       }
-    
-       </script>
-        <div class="container" style="background-color:#f1f1f1">
-          <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
-          <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Register</button>
-          <span class="psw">Forgot <a href="#">password?</a></span>
-        </div>
-      </form>
-    </div>
-    </form> -->
+
     <script language="javascript">
       function check(form)
       {
@@ -270,7 +185,7 @@ function populateClaimReason() {
     <select name="Claim Reason" id="Claim Reason" required>
       <option value="" disabled selected>-Please Select-</option>
     </select>
-    
+    <!-- <p><br>Insurance Amount</p> -->
     <label for="insuredAmount">Insured Amount</label>
       <!-- <input type="number" id="insuredAmount" name="insuredAmount"><br> -->
 
@@ -341,7 +256,7 @@ function populateClaimReason() {
         }
     </script>
 
-
+<br>
         
     <div id="foot" class="button-container">
       <!-- <button type="submit" value="Submit">Submit</button> -->

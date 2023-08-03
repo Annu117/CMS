@@ -138,9 +138,10 @@
           </div>
         </div>
         <div class="user" id="user">
-          <a href="#" class="user-link">Name</a>
+          <!-- <a href="#" class="user-link">Name</a> -->
           <div class="user-img-wrapper">
-            <img src="useravatar.png" alt="User 1" style="width: 50px; height: auto;" />
+            <a href="#" class="user-link">
+            <img src="useravatar.png" alt="User 1" style="width: 50px; height: auto;" /></a>
           </div>
           <div class="user-dropdown">
             <a href="index.html">Log Out</a>
@@ -164,49 +165,7 @@
   
       <div id="id01" class="modal">
   
-  <form class="modal-content animate" action="/action_page.php" method="post">
-    <div class="imgcontainer">
-      <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
-      <h2>User LogIn</h2>
-    </div>
-
-    <div class="container">
-      <label for="uname"><b>Email ID</b></label>
-      <input type="text" placeholder="Enter Email ID" name="uname" id="uname" required>
-
-      <label for="psw"><b>Password</b></label>
-      <input type="password" placeholder="Enter Password" name="psw" required>
-      <!-- <button class="special-button" type="submit">Login</button> -->
-      <input type="button" class="special-button" type="submit" onclick="check(this.form)" value="Login"/>
-      <label>
-        <input type="checkbox" checked="checked" name="remember"> Remember me
-      </label>
-    </div>
-    <script language="javascript">
- function check(form)
- {
-
- if(form.userid.value && form.pswrd.value)
-  {
-
-// alert("Welcome to CLAIM MANAGEMENT HUB");
-var userid = document.getElementById("userid").value;
-document.write("Welcome " + userid);
-
-   }
-   else
-   {
-    alert("Invalid Email ID or Password entered!");
-    }
-   }
-
-   </script>
-    <div class="container" style="background-color:#f1f1f1">
-      <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
-      <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Register</button>
-      <span class="psw">Forgot <a href="#">password?</a></span>
-    </div>
-  </form>
+  
 </div>
 </form>
 <script language="javascript">
