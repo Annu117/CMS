@@ -28,7 +28,7 @@
       margin-left: 30px; */
       font-family: 'Montserrat', sans-serif;
       font-size: 25px;
-      /* font-weight: 700; */
+      font-weight: 500;
       color: #181f82;
       text-decoration: none;
       margin-right: 20px;
@@ -49,7 +49,7 @@
       color: #333333;
       padding: 10px 20px;
       margin-right: 10px;
-      /* font-weight: 700; */
+      font-weight: 500;
     }
 
     .nav-items a:hover {
@@ -78,7 +78,7 @@
       font-size: 40px;
       /* color: #fff; */
       color: #181f82;
-      /* font-weight: 700; */
+      font-weight: 500;
       text-transform: uppercase;
       margin: 0;
     }
@@ -100,7 +100,7 @@
       border: none;
       border-radius: 5px;
       font-size: 18px;
-      /* font-weight: 700; */
+      font-weight: 500;
       cursor: pointer;
       /* box-shadow: 0px 0px 20px rgba(255, 255, 255, 0.4) */
       color: #ffffff;
@@ -120,7 +120,7 @@
   margin: 8px 0;
   border: none;
   border-radius: 5px;
-  /* font-weight: 700; */
+  font-weight: 500;
 }
 
 .dropdown {
@@ -248,7 +248,7 @@ span.psw {
   top: 0;
   color: #000;
   font-size: 35px;
-  /* font-weight: bold; */
+  font-weight: 500;
 }
 
 .close:hover,
@@ -349,7 +349,7 @@ span.psw {
       font-size: 30px;
       /* color: #333333; */
       color: #181f82;
-      /* font-weight: 700; */
+      font-weight: 500;
       text-transform: uppercase;
       margin: 0;
     }
@@ -425,7 +425,7 @@ span.psw {
     .user-link {
       /* margin-left: 10px; */
       color: #333333;
-      /* font-weight: 700; */
+      font-weight: 500;
       text-decoration: none;
       margin-right: 10px;
     }
@@ -464,4 +464,11 @@ span.psw {
       color: gray;
       text-decoration: none;
       cursor: not-allowed;
+    }
+
+    .center-align {
+      text-align: center;
+      font-weight: bold;
+      font-size: 24px;
+      /* color: navy; */
     }

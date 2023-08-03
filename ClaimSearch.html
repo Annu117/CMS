@@ -6,7 +6,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
   <link rel="stylesheet" href="login.css">
-  <!-- <link rel="stylesheet" href="claim.css"> -->
+  <link rel="stylesheet" href="claim.css">
   <style>
     /* CSS Styling */
     * {
@@ -204,40 +204,38 @@ window.onclick = function(event) {
     </nav>
   </header>
   <form action="register" method="get">
-  <!-- <div>
-    <a href="index.html" style="text-decoration: none;"><button id="back">Back</button></a>
-  </div> -->
-  <h1>  Search Claim</h1>
-  <div class="form-container">
-    <label for="searchType">Search By:</label>
-    <select id="searchType">
-      <option value="id">By Id</option>
-      <option value="name">By Name</option>
-      <option value="date">By Date</option>
-    </select>
+    <!-- <div class="form-container"> -->
+      <p class="center-align">Search Claim</p>
 
-    <div id="idField">
-      <label for="id">Enter Id:</label>
-      <input type="text" id="id" />
-    </div>
+      <label for="searchType">Search By:</label>
+        <select id="searchType">
+          <option value="id">By Id</option>
+          <option value="name">By Name</option>
+          <option value="date">By Date</option>
+        </select>
 
-    <div id="nameField">
-      <label for="name">Enter Name:</label>
-      <input type="text" id="name" />
-    </div>
+      <div id="idField">
+        <label for="id">Enter Id:</label>
+        <input type="text" id="id" />
+      </div>
 
-    <div id="dateFields">
-      <label for="fromDate">From Date:</label>
-      <input type="date" id="fromDate" />
-  
-      <label for="toDate">To Date:</label>
-      <input type="date" id="toDate" />
-    </div>
+      <div id="nameField">
+        <label for="name">Enter Name:</label>
+        <input type="text" id="name" />
+      </div>
 
-    <button id="submitBtn">Search</button>
+      <div id="dateFields">
+        <label for="fromDate">From Date:</label>
+        <input type="date" id="fromDate" />
+    
+        <label for="toDate">To Date:</label>
+        <input type="date" id="toDate" />
+      </div>
+
+      <button id="submitBtn">Search</button>
     <!-- <button id="backBtn">Back</button> -->
-  </div>
-
+  <!-- </div> -->
+</form>
   <table id="resultTable">
     <thead>
       <tr>
@@ -254,9 +252,6 @@ window.onclick = function(event) {
   </table>
 
   <script>
-    // JavaScript code for DOM manipulation and fetching data
-
-    // Function to show/hide fields based on selected search type
 
     document.getElementById("back").addEventListener("")
     function toggleFields() {
@@ -352,7 +347,7 @@ window.onclick = function(event) {
         window.location.href = 'Home.html';
     });
   </script>
-  </form><br><br><br>
+  <br><br><br>
   <footer class="footer">
     <div class="bottom-links">
       <div class="links">
